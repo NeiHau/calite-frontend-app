@@ -28,6 +28,7 @@ const wsLink = new WebSocketLink({
   uri: `ws://localhost:5001/graphql`,
   options: {
     reconnect: true,
+    timeout: 3000,
   },
 });
 
