@@ -1,12 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Header from "./components/Header/Header.jsx";
 import MyAppCalendar from "./components/Body/Calendar.jsx";
+import QueryButton from "./components/Button/QueryButton.jsx";
+import ReservationForm from "./components/ReservationForm/ReservationForm.jsx";
 
 function App() {
   return (
     <>
       {/* <Header logo={logo} /> */}
+      <div style={{ marginBottom: "20px" }}>
+        <ReservationForm />
+      </div>
+      <QueryButton />
       <MyAppCalendar />
     </>
   );
