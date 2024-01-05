@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { CREATE_RESERVATION_MUTATION } from "../../graphql/mutations/reservationMutations";
 import { useMutation } from "@apollo/client";
+import { CREATE_RESERVATION_MUTATION } from "../../../../graphql/mutations/reservationMutations";
 
 export default function ReservationForm() {
-  // フォームの状態を管理
   const [formData, setFormData] = useState({
     id: uuidv4(),
-    name: "",
+    customerName: "",
     gender: "",
     age: 0,
     menu: {
@@ -16,8 +15,8 @@ export default function ReservationForm() {
       description: "",
     },
   });
+  const [reservationData, setReservationData] = useState({});
 
-  // useMutation フックの使用
   const [createReservation, { loading, error }] = useMutation(
     CREATE_RESERVATION_MUTATION
   );
@@ -30,12 +29,18 @@ export default function ReservationForm() {
       const { data } = await createReservation({
         variables: {
           id: uuidv4(),
-          name: formData.name,
+          customerName: formData.customerName,
           gender: formData.gender,
           age: formData.age,
-          menu: formData.menu,
+          menu: {
+            menuName: formData.menu.menuName,
+            price: formData.menu.price,
+            description: formData.menu.description,
+          },
         },
       });
+
+      setReservationData(data.createReservation);
 
       if (loading) {
         console.log("Submitting...");
@@ -88,7 +93,7 @@ export default function ReservationForm() {
       <input
         type='text'
         name='name'
-        value={formData.name}
+        value={formData.customerName}
         onChange={handleChange}
         placeholder='Name'
         autoComplete='off'
@@ -112,7 +117,7 @@ export default function ReservationForm() {
       <input
         type='text'
         name='menuName'
-        value={formData.menu.name}
+        value={formData.menu.menuName}
         onChange={handleChange}
         placeholder='Menu Name'
         autoComplete='off'
@@ -134,6 +139,22 @@ export default function ReservationForm() {
         autoComplete='off'
       />
       <button type='submit'>Create Reservation</button>
+      {reservationData && (
+        <div>
+          <h3>Reservation</h3>
+          <p>Name: {reservationData.customerName}</p>
+          <p>Gender: {reservationData.gender}</p>
+          <p>Age: {reservationData.age}</p>
+          {/* menuの情報がある場合に表示 */}
+          {reservationData.menu && (
+            <div>
+              <p>Menu Name: {reservationData.menu.menuName}</p>
+              <p>Price: {reservationData.menu.price}</p>
+              <p>Description: {reservationData.menu.description}</p>
+            </div>
+          )}
+        </div>
+      )}
     </form>
   );
 }

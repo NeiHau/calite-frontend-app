@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_RESERVATION_QUERY } from "../../graphql/queries/reservationQuery";
+import { GET_RESERVATION_QUERY } from "../graphql/queries/reservationQuery";
 
 const QueryButton = () => {
   const [reservationId, setReservationId] = useState("");
-  const [reservationData, setReservationData] = useState(null); // useQueryからfetchしたdataを管理するuseState
+  // useQueryからfetchしたdataを管理するuseState
+  const [reservationData, setReservationData] = useState(null);
   const { loading, error, refetch } = useQuery(GET_RESERVATION_QUERY, {
     skip: true,
     variables: { id: reservationId },
@@ -46,13 +47,13 @@ const QueryButton = () => {
       {reservationData && (
         <div>
           <h3>Reservation</h3>
-          <p>Name: {reservationData.name}</p>
+          <p>Name: {reservationData.customerName}</p>
           <p>Gender: {reservationData.gender}</p>
           <p>Age: {reservationData.age}</p>
           {/* menuの情報がある場合に表示 */}
           {reservationData.menu && (
             <div>
-              <p>Menu Name: {reservationData.menu.name}</p>
+              <p>Menu Name: {reservationData.menu.menuName}</p>
               <p>Price: {reservationData.menu.price}</p>
               <p>Description: {reservationData.menu.description}</p>
             </div>

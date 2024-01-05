@@ -2,15 +2,25 @@ import { gql } from "@apollo/client";
 
 export const CREATE_RESERVATION_MUTATION = gql`
   mutation createReservation(
-    $name: String!
+    $customerName: String!
     $gender: String!
     $age: Float!
     $menu: MenuInput!
   ) {
-    createReservation(name: $name, gender: $gender, age: $age, menu: $menu) {
-      name
+    createReservation(
+      customerName: $customerName
+      gender: $gender
+      age: $age
+      menu: $menu
+    ) {
+      customerName
       gender
       age
+      menu {
+        menuName
+        price
+        description
+      }
     }
   }
 `;
@@ -18,7 +28,7 @@ export const CREATE_RESERVATION_MUTATION = gql`
 // MenuInputの型定義
 export const MenuInput = gql`
   input MenuInput {
-    name: String!
+    menuName: String!
     price: Float!
     description: String
   }
