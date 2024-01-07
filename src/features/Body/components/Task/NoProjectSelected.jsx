@@ -1,5 +1,5 @@
 import noProjectImage from "../../../../assets/no-projects.png";
-import TaskButton from "./Button";
+import TaskButton from "./util/Button";
 
 export default function NoProjectSelected({ onStartAddProject }) {
   return (

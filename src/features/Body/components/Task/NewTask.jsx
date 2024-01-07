@@ -1,47 +1,31 @@
-import { useRef } from "react";
-import TaskInput from "./TaskInput";
+import { useState } from "react";
 
 export default function NewTask({ onAdd }) {
-  const title = useRef();
-  const description = useRef();
-  const dueDate = useRef();
+  const [enteredTask, setEnteredTask] = useState("");
 
-  function handleSave() {
-    const enteredTitle = title.current.value;
-    const enteredDescription = description.current.value;
-    const enteredDueDate = dueDate.current.value;
+  function handleChange(event) {
+    setEnteredTask(event.target.value);
+  }
 
-    // validation
-
-    onAdd({
-      title: enteredTitle,
-      description: enteredDescription,
-      dueDate: enteredDueDate,
-    });
+  function handleClick() {
+    if (enteredTask.trim() === "") {
+      return;
+    }
+    onAdd(enteredTask);
+    setEnteredTask("");
   }
 
   return (
-    <div className='new-task-container'>
-      <menu className='new-task-menu'>
-        <li>
-          <button className='cancel-button'>Cancel</button>
-        </li>
-        <li>
-          <button className='save-button' onClick={handleSave}>
-            Save
-          </button>
-        </li>
-      </menu>
-      <div>
-        <TaskInput type='text' ref={title} label='TITLE' />
-        <TaskInput
-          type='text'
-          ref={description}
-          label='DESCRIPTION'
-          textarea={true}
-        />
-        <TaskInput type='date' ref={dueDate} label='DUE DATE' />
-      </div>
+    <div className='add-new-task-container'>
+      <input
+        type='text'
+        className='add-new-task-input'
+        onChange={handleChange}
+        value={enteredTask}
+      ></input>
+      <button className='add-new-task-button' onClick={handleClick}>
+        Add Task
+      </button>
     </div>
   );
 }
