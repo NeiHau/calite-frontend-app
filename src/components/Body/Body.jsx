@@ -1,6 +1,6 @@
 import ReservationForm from "./components/ReservationForm";
 import NewReservationSubscription from "./components/Contact/SubscriptionResult";
-import QueryButton from "../QueryButton";
+import QueryButton from "../Button/QueryButton";
 import MyAppCalendar from "./components/Home/Calendar";
 
 export default function Body() {

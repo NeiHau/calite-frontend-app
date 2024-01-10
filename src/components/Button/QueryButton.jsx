@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_RESERVATION_QUERY } from "../graphql/queries/reservationQuery";
+import { GET_RESERVATION_QUERY } from "../../graphql/queries/reservationQuery";
 
 const QueryButton = () => {
   const [reservationId, setReservationId] = useState("");

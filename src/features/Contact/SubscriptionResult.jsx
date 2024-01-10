@@ -1,6 +1,6 @@
 import React from "react";
 import { useSubscription } from "@apollo/client";
-import { NEW_RESERVATION_SUBSCRIPTION } from "../../../../graphql/subscriptions/reservationSubscription";
+import { NEW_RESERVATION_SUBSCRIPTION } from "../../graphql/subscriptions/reservationSubscription";
 
 function NewReservationSubscription() {
   const { data, loading, error } = useSubscription(

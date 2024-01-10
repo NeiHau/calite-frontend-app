@@ -1,6 +1,6 @@
 import NewReservationSubscription from "./SubscriptionResult";
 import LoginForm from "../../../Auth/components/LoginForm";
-import { login } from "../../../Auth/authRepository";
+import { login } from "../Auth/authRepository";
 
 export default function Contact() {
   const handleLogin = async (email, password) => {

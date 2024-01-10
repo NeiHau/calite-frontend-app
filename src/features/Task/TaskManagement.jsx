@@ -1,4 +1,4 @@
-import TasksSidebar from "./TasksSidebar";
+import TasksSidebar from "./TasksSidebar.jsx";
 import NoProjectSelected from "./NoProjectSelected.jsx";
 import React, { useState } from "react";
 import SelectedProject from "./SelectedProject.jsx";
