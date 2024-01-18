@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 // 各ページコンポーネントをインポート
-import Home from "../Body/components/Home/Home";
-import ReservationForm from "../Body/components/Reservation/Reservation";
-import TaskManagement from "../Body/components/Task/TaskManagement";
-import Contact from "../Body/components/Contact/Contact";
+import Home from "../../features/Home/Home.jsx";
+import ReservationForm from "../../features/Reservation/ReservationForm.jsx";
+import TaskManagement from "../../features/Task/TaskManagement.jsx";
+import Contact from "../../features/Contact/Contact.jsx";
 
 export default function Header() {
   const [selectedTab, setSelectedTab] = useState("/");

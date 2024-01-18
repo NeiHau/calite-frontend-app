@@ -1,5 +1,5 @@
 import NewReservationSubscription from "./SubscriptionResult";
-import LoginForm from "../../../Auth/components/LoginForm";
+import LoginForm from "../Auth/LoginForm.jsx";
 import { login } from "../Auth/authRepository";
 
 export default function Contact() {
