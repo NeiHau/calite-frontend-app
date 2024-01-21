@@ -6,6 +6,11 @@ header {
   align-items: center;
   justify-content: space-around;
   background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .App-tabbar {
@@ -392,4 +397,64 @@ ul {
 
 .task-list-button:hover {
   color: red;
+}
+
+/* Contact */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+  margin: 0;
+  padding-top: 70px;
+  background-color: grey;
+}
+
+.messages-list {
+  flex-grow: 1;
+  overflow-y: auto; /* 必要に応じてスクロール */
+  display: flex;
+  flex-direction: column; /* 新しいメッセージを上から追加 */
+  align-items: flex-end; /* メッセージを右寄せにする */
+  padding: 10px;
+}
+
+.message {
+  max-width: 60%; /* メッセージの最大幅 */
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 20px; /* 吹き出し風の丸み */
+  background-color: #dcf8c6; /* LINE風の背景色 */
+  word-wrap: break-word; /* 長い単語も折り返す */
+  margin-bottom: 10px; /* メッセージ間の余白 */
+}
+
+.contact-input {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 400px;
+  box-sizing: border-box;
+  align-self: center;
+}
+
+.contact-input form {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  padding: 1px;
+  margin-bottom: 10px;
+}
+
+.contact-input input {
+  flex-grow: 1;
+  height: 45px;
+}
+
+.contact-input button {
+  flex-shrink: 0;
+  height: 50px;
 }
