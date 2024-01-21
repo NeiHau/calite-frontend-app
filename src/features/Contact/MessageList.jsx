@@ -1,6 +1,7 @@
 import { useSubscription } from "@apollo/client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { NEW_MESSAGE_SUBSCRIPTION } from "../../graphql/subscriptions/contact.subscription";
+import MessageItem from "./MessageItem";
 
 export default function MessageList() {
   const [messages, setMessages] = useState([]);
@@ -13,16 +14,14 @@ export default function MessageList() {
     }
   }, [data]);
 
+  const messageList = useMemo(() => {
+    return messages.map((message, index) => (
+      <MessageItem key={index} message={message} />
+    ));
+  }, [messages]);
+
   if (loading) return <p>Subscription Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  return (
-    <div className='messages-list'>
-      {messages.map((message, index) => (
-        <div key={index} className='message'>
-          {message}
-        </div>
-      ))}
-    </div>
-  );
+  return <div className='messages-list'>{messageList}</div>;
 }
