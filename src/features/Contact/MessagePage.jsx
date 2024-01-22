@@ -6,7 +6,7 @@ import { useMutation } from "@apollo/client";
 import { SEND_MESSAGE_MUTATION } from "../../graphql/mutations/contact.mutation";
 import { v4 as uuidv4 } from "uuid";
 
-export default function Contact() {
+export default function MessagePage() {
   const [sendMessage, { loading, error }] = useMutation(SEND_MESSAGE_MUTATION);
 
   const handleSendMessage = async (content) => {
@@ -31,8 +31,10 @@ export default function Contact() {
 
   return (
     <>
-      {loading && <p>Loading中です</p>}
-      {error && <p>エラー：{error}</p>}
+      {/* <div className={`overlay ${loading || error ? "visible" : ""}`}>
+        {loading && <p className='loading-container'>Loading中です...</p>}
+        {error && <p className='error-container'>エラー：{error.message}</p>}
+      </div> */}
       <div className='contact-container'>
         <MessageList />
         <MessageInput onSendMessage={handleSendMessage} />

@@ -17,7 +17,7 @@ export default function MessageList() {
 
   const messageList = useMemo(() => {
     return messages.map((message, index) => (
-      <MessageItem key={index} message={message} />
+      <MessageItem key={message.key} message={message} />
     ));
   }, [messages]);
 
