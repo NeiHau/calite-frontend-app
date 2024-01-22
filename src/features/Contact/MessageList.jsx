@@ -1,7 +1,8 @@
-import { useSubscription } from "@apollo/client";
-import { useState, useEffect, useMemo } from "react";
-import { NEW_MESSAGE_SUBSCRIPTION } from "../../graphql/subscriptions/contact.subscription";
+import { useMemo, useState, useEffect } from "react";
 import MessageItem from "./MessageItem";
+import React from "react";
+import { useSubscription } from "@apollo/client";
+import { NEW_MESSAGE_SUBSCRIPTION } from "../../graphql/subscriptions/contact.subscription";
 
 export default function MessageList() {
   const [messages, setMessages] = useState([]);

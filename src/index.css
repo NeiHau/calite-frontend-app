@@ -417,6 +417,7 @@ ul {
   flex-direction: column; /* 新しいメッセージを上から追加 */
   align-items: flex-end; /* メッセージを右寄せにする */
   padding: 10px;
+  padding-top: 70px;
 }
 
 .message {
